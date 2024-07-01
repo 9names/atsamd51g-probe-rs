@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "preLaunchTask": "rust: cargo build",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "ATSAMD51G19A-project",
+            "cwd": "${workspaceFolder}",
+            "chip": "ATSAMD51G19A",
+            "connectUnderReset": false,
+            "speed": 4000,
+            "runtimeExecutable": "probe-rs",
+            "runtimeArgs": [
+                "dap-server"
+            ],
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "haltAfterReset": true,
+            },
+            "coreConfigs": [
+                {
+                    "coreIndex": 0,
+                    "programBinary": "target/thumbv7em-none-eabihf/debug/atsamd51g-defmt",
+                    "rttEnabled": true,
+                }
+            ],
+            "env": {
+                "DEFMT_LOG": "debug"
+            },
+            "consoleLogLevel": "Info",
+            "wireProtocol": "Swd"
+        }
+    ]
+}
